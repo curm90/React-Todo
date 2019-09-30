@@ -10,7 +10,7 @@ class TodoForm extends Component {
           name='newTodo'
           value={this.props.newTodo}
         />
-        <button>Add Todo</button>
+        <button type='submit'>Add Todo</button>
         <button>Clear Completed</button>
       </form>
     );
