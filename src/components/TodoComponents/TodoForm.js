@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class TodoForm extends Component {
-  render() {
-    return (
-      <form onSubmit={this.props.formSubmitted}>
-        <input
-          onChange={this.props.handleTodoChanged}
-          id='newTodo'
-          name='newTodo'
-          value={this.props.newTodo}
-        />
-        <button type='submit'>Add Todo</button>
-        <button>Clear Completed</button>
-      </form>
-    );
-  }
-}
+const TodoForm = props => {
+  return (
+    <form>
+      <input
+        onChange={props.handleTodoChanged}
+        id='newTodo'
+        name='newTodo'
+        value={props.newTodo}
+      />
+      <button onClick={props.addTodo} type='submit'>
+        Add Todo
+      </button>
+      <button>Clear Completed</button>
+    </form>
+  );
+};
 
 export default TodoForm;

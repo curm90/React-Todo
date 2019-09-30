@@ -11,13 +11,22 @@ class App extends React.Component {
     };
   }
 
+  handleCompleted = id => {
+    let todos = [...this.state.todos];
+    let todo = todos.find(todo => todo.id === id);
+    todo.completed = !todo.completed;
+
+    this.setState({ todo });
+    console.log(this.state);
+  };
+
   handleTodoChanged = e => {
     this.setState({
       newTodo: e.target.value
     });
   };
 
-  formSubmitted = e => {
+  addTodo = e => {
     e.preventDefault();
     this.setState({
       newTodo: '',
@@ -37,11 +46,14 @@ class App extends React.Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoForm
-          formSubmitted={this.formSubmitted}
+          addTodo={this.addTodo}
           handleTodoChanged={this.handleTodoChanged}
           newTodo={this.state.newTodo}
         />
-        <TodoList todos={this.state.todos} />
+        <TodoList
+          todos={this.state.todos}
+          handleCompleted={this.handleCompleted}
+        />
       </div>
     );
   }
