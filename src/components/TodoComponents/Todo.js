@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Todo = props => {
+const Todo = ({ handleCompleted, todo }) => {
   return (
     <div
-      style={props.todo.completed ? { textDecoration: 'line-through' } : null}
+      style={todo.completed ? { textDecoration: 'line-through' } : null}
       className='todo-item'
-      onClick={() => props.handleCompleted(props.todo.id)}
+      onClick={() => handleCompleted(todo.id)}
     >
-      {props.todo.task}
+      {todo.task}
     </div>
   );
 };

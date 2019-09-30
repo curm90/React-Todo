@@ -1,18 +1,23 @@
 import React from 'react';
 
-const TodoForm = props => {
+const TodoForm = ({
+  handleAddTodo,
+  handleTodoChanged,
+  newTodo,
+  handleClearCompletedTodos
+}) => {
   return (
     <form>
       <input
-        onChange={props.handleTodoChanged}
+        onChange={handleTodoChanged}
         id='newTodo'
         name='newTodo'
-        value={props.newTodo}
+        value={newTodo}
       />
-      <button onClick={props.handleAddTodo} type='submit'>
+      <button onClick={handleAddTodo} type='submit'>
         Add Todo
       </button>
-      <button onClick={props.handleClearCompletedTodos}>Clear Completed</button>
+      <button onClick={handleClearCompletedTodos}>Clear Completed</button>
     </form>
   );
 };
