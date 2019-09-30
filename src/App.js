@@ -17,7 +17,6 @@ class App extends React.Component {
     todo.completed = !todo.completed;
 
     this.setState({ todo });
-    console.log(this.state);
   };
 
   handleTodoChanged = e => {
@@ -26,7 +25,7 @@ class App extends React.Component {
     });
   };
 
-  addTodo = e => {
+  handleAddTodo = e => {
     e.preventDefault();
     this.setState({
       newTodo: '',
@@ -41,14 +40,21 @@ class App extends React.Component {
     });
   };
 
+  handleClearCompletedTodos = e => {
+    e.preventDefault();
+    let todos = this.state.todos.filter(todo => !todo.completed);
+    this.setState({ todos });
+  };
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoForm
-          addTodo={this.addTodo}
+          handleAddTodo={this.handleAddTodo}
           handleTodoChanged={this.handleTodoChanged}
           newTodo={this.state.newTodo}
+          handleClearCompletedTodos={this.handleClearCompletedTodos}
         />
         <TodoList
           todos={this.state.todos}
